@@ -1,3 +1,69 @@
 spring:
+  config:
+    import: "optional:file:.env[.properties]"
   application:
-    name: study
+    name: ecommerce
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    default-encoding: UTF-8
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+minio:
+  endpoint: ${MINIO_ENDPOINT}
+  access-key: ${MINIO_ACCESS_KEY}
+  secret-key: ${MINIO_SECRET_KEY}
+  secure: ${MINIO_SECURE}
+  default-bucket: ${MINIO_DEFAULT_BUCKET}
+  presign-exp-minutes: ${MINIO_PRESIGN_EXP_MINUTES}
+
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-duration: ${JWT_ACCESS_TOKEN_DURATION}
+  refresh-token-duration: ${JWT_REFRESH_TOKEN_DURATION}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS}
+
+app:
+  admin:
+    email: ${ecommerce_ADMIN_EMAIL}
+    password: ${ecommerce_ADMIN_PASSWORD}
+  frontend:
+    url: ${FRONTEND_URL}
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health, prometheus
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    prometheus:
+      enabled: true
