@@ -1,4 +1,10 @@
 package com.ecommerce.study.user.application.port.in.create;
 
-public class CreateUserResponseDTO {
+import com.ecommerce.study.user.domain.dto.UserView;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+@NoArgsConstructor
+@SuperBuilder
+public class CreateUserResponseDTO extends UserView {
 }
