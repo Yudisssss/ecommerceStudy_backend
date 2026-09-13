@@ -20,8 +20,8 @@ public class CreateUserUseCase {
         User user = new User();
         user.setActive(true);
 
-        CreateUserResponseDTO response = modelMapper.map(CreateUserResponseDTO.class);
+        CreateUserResponseDTO response;
 
-        return response;
+        return null;
     }
 }
