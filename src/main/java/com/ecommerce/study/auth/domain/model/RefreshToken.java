@@ -1,4 +1,4 @@
-package com.ecommerce.study.auth.domain;
+package com.ecommerce.study.auth.domain.model;
 
 import lombok.Builder;
 import lombok.Data;
